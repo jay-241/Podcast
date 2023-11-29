@@ -8,22 +8,26 @@ function Podcast() {
   const fetchTranscriptions = async () => {
     setLoading(true);
     try {
-      
-      const response = `${process.env.REACT_APP_API}/show`;
+      // Use the `fetch` function to make a network request to the API.
+      const response = await fetch(`${process.env.REACT_APP_API}/show`);
+      // Once the response is received, parse the JSON body of the response.
       const data = await response.json();
       if (response.ok) {
-        setTranscriptions(data.transcripts); // Directly use data.transcripts
+        // If the response is successful, set the transcriptions state with the data.
+        setTranscriptions(data.transcripts);
       } else {
+        // Log an error if the response is not successful.
         console.error('Failed to fetch transcriptions:', data);
       }
     } catch (error) {
+      // Catch any errors that occur during the fetch operation.
       console.error('Error fetching transcriptions:', error);
     } finally {
+      // Set the loading state to false once the operation is complete.
       setLoading(false);
     }
   };
   
-
   return (
     <div>
       <Navbar />
