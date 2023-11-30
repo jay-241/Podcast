@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar'; 
-
+import './Podcast.css';
 function Podcast() {
   const [transcriptions, setTranscriptions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -29,15 +29,20 @@ function Podcast() {
   };
   
   return (
-    <div>
+    <>
       <Navbar />
+    <div className="podcast-container"> {/* Added class name for the main container */}
       <h1>Transcriptions</h1>
-      <button onClick={fetchTranscriptions} disabled={loading}>
+      <button 
+        onClick={fetchTranscriptions} 
+        disabled={loading}
+        className="fetch-button" 
+      >
         {loading ? 'Loading...' : 'Fetch Results'}
       </button>
       <div>
         {transcriptions.length > 0 ? (
-          <ul>
+          <ul className="transcription-list"> {/* Added class name for the list */}
             {transcriptions.map((transcript, index) => (
               <li key={index}>
                 <h2>Transcript {index + 1}</h2>
@@ -46,11 +51,13 @@ function Podcast() {
             ))}
           </ul>
         ) : (
-          !loading && <p>No transcriptions to display.</p>
+          !loading && <p className="message">No transcriptions to display.</p> 
         )}
       </div>
     </div>
+  </>
   );
+  
 }
 
 export default Podcast;

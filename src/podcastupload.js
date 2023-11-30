@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar'; 
-
+import './PodcastUpload.css'
 function PodcastUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState('');
@@ -51,15 +51,18 @@ function PodcastUpload() {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
-      <h2>Upload Your Podcast</h2>
-      <p>Choose an audio file to transcribe into text:</p>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
-      <div>{message}</div>
+    <div className="upload-container">
+      <h2 className="upload-heading">Upload Your Podcast</h2>
+      <p className="upload-paragraph">Choose an audio file to transcribe into text:</p>
+      <input type="file" className="upload-file-input" onChange={handleFileChange} />
+      <button className="upload-button" onClick={handleUpload}>Upload</button>
+      <div className="upload-message">{message}</div>
     </div>
+    </>
   );
+  
 }
 
 export default PodcastUpload;

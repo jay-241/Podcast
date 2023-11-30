@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom for routing
+import { Link, useNavigate } from 'react-router-dom';
+import './Login.css'; // Import your Login.css stylesheet
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,7 +29,7 @@ function Login() {
 
       if (response.status === 200) {
         setMessage(data.message);
-        navigate('/podcastupload'); // Use navigate to redirect to the podcastupload page
+        navigate('/podcastupload');
       } else {
         setMessage(data.message);
       }
@@ -39,7 +40,8 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="login-container"> {/* Apply the class name here */}
+      <h1>Welcome to Podcast Transcription</h1>
       <h1>User Login</h1>
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>

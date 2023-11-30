@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Registration.css';
 function Registration() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,45 +43,57 @@ function Registration() {
   };
 
   return (
-    <div>
-      <h1>User Registration</h1>
-      <form onSubmit={handleRegistration}>
-        <label htmlFor="name">Name:</label>
+    <div className="registration-container">
+      <h1 className="registration-heading">User Registration</h1>
+      <form className="registration-form" onSubmit={handleRegistration}>
+        <label className="registration-label" htmlFor="name">
+          Name:
+        </label>
         <input
+          className="registration-input"
           type="text"
           id="name"
           name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-        /><br /><br />
-
-        <label htmlFor="email">Email:</label>
+        />
+  
+        <label className="registration-label" htmlFor="email">
+          Email:
+        </label>
         <input
+          className="registration-input"
           type="email"
           id="email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        /><br /><br />
-
-        <label htmlFor="password">Password:</label>
+        />
+  
+        <label className="registration-label" htmlFor="password">
+          Password:
+        </label>
         <input
+          className="registration-input"
           type="password"
           id="password"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        /><br /><br />
-
-        <button type="submit">Register</button>
+        />
+  
+        <button className="registration-button" type="submit">
+          Register
+        </button>
       </form>
-
-      <div>{message}</div>
+  
+      <div className="registration-message">{message}</div>
     </div>
   );
+  
 }
 
 export default Registration;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './ContactUs.css';
 function ContactUs() {
   // State to store form input values
   const [name, setName] = useState('');
@@ -47,44 +47,56 @@ function ContactUs() {
   };
 
   return (
+    <div className="contactus-container">
+  <h2 className="contactus-title">Contact Us</h2>
+  <form className="contactus-form" onSubmit={handleSubmit}>
     <div>
-      <h2>Contact Us</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="issue">Issue:</label>
-          <textarea
-            id="issue"
-            value={issue}
-            onChange={(e) => setIssue(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <div>
-          <button type="submit">Contact</button>
-        </div>
-      </form>
-      {mailSent && <p>Mail sent to Admin Successfully</p>} {/* Display success message if mailSent is true */}
+      <label className="contactus-label" htmlFor="name">
+        Name:
+      </label>
+      <input
+        className="contactus-input"
+        type="text"
+        id="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+      />
     </div>
+    <div>
+      <label className="contactus-label" htmlFor="email">
+        Email:
+      </label>
+      <input
+        className="contactus-input"
+        type="email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+    </div>
+    <div>
+      <label className="contactus-label" htmlFor="issue">
+        Issue:
+      </label>
+      <textarea
+        className="contactus-textarea"
+        id="issue"
+        value={issue}
+        onChange={(e) => setIssue(e.target.value)}
+        required
+      ></textarea>
+    </div>
+    <div>
+      <button className="contactus-button" type="submit">
+        Contact
+      </button>
+    </div>
+  </form>
+  {mailSent && <p className="contactus-success">Mail sent to Admin Successfully</p>}
+</div>
+
   );
 }
 
